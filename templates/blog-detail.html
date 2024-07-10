@@ -45,26 +45,22 @@
                 <!--  Login Register Area -->
                 <div class="col-7 col-sm-6">
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
+                        {% if user.is_authenticated %}
                         <div class="login_register_area d-flex">
                             <div class="login">
-                                <a href="register.html">Sing in</a>
+                                <p>Salom {{user.username}}, <a href="{% url 'log_out' %}">chiqish</a></p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="login_register_area d-flex">
+                            <div class="login">
+                                <a href="{% url 'login_user' %}">Sing in</a>
                             </div>
                             <div class="register">
-                                <a href="register.html">Sing up</a>
+                                <a href="{% url 'register_user' %}">Sing up</a>
                             </div>
                         </div>
-                        <!-- Search Button Area -->
-                        <div class="search_button">
-                            <a class="searchBtn" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-                        </div>
-                        <!-- Search Form -->
-                        <div class="search-hidden-form">
-                            <form action="#" method="get">
-                                <input type="search" name="search" id="search-anything" placeholder="Search Anything...">
-                                <input type="submit" value="" class="d-none">
-                                <span class="searchBtn"><i class="fa fa-times" aria-hidden="true"></i></span>
-                            </form>
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -229,28 +225,18 @@
                         <!-- Single Widget Area -->
                         <div class="single-widget-area subscribe_widget text-center">
                             <div class="widget-title">
-                              <h6>Subscribe &amp; Follow</h6>
+                                <h6>Subscribe &amp; Follow</h6>
                             </div>
-                            {% for social_n in social %}
                             <div class="subscribe-link">
-                                {% if social_n.facebook %}
-                                  <a href="{{ social_n.facebook }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                {% endif %}
-                                {% if social_n.twitter %}
-                                  <a href="{{ social_n.twitter }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                {% endif %}
-                                {% if social_n.google %}
-                                  <a href="{{ social_n.google }}"><i class="fa fa-google" aria-hidden="true"></i></a>
-                                {% endif %}
-                                {% if social_n.instagram %}
-                                  <a href="{{ social_n.instagram }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                {% endif %}
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a>
                             </div>
-                            {% endfor %}
-                            {% if not social_n %}
-                              <h2>No social network</h2>
-                            {% endif %}
-                          </div>
+                        </div>
+
                         <!-- Single Widget Area -->
                         <div class="single-widget-area popular-post-widget">
                             <div class="widget-title text-center">
